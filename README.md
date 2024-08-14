@@ -22,8 +22,6 @@ The project demonstrates Symfony best practices and includes authentication, val
 - [Part 2: Algorithmic Challenge](#part-2-algorithmic-challenge)
 - [Testing](#testing)
 - [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Setup
 
