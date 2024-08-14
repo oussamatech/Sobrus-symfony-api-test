@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogArticle index{% endblock %}
+
+{% block body %}
+    <h1>BlogArticle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>AuthorId</th>
+                <th>Title</th>
+                <th>PublicationDate</th>
+                <th>CreationDate</th>
+                <th>Content</th>
+                <th>Keywords</th>
+                <th>Status</th>
+                <th>Slug</th>
+                <th>CoverPictureRef</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog_article in blog_articles %}
+            <tr>
+                <td>{{ blog_article.id }}</td>
+                <td>{{ blog_article.authorId }}</td>
+                <td>{{ blog_article.title }}</td>
+                <td>{{ blog_article.publicationDate ? blog_article.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ blog_article.creationDate ? blog_article.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ blog_article.content }}</td>
+                <td>{{ blog_article.keywords ? blog_article.keywords|json_encode : '' }}</td>
+                <td>{{ blog_article.status }}</td>
+                <td>{{ blog_article.slug }}</td>
+                <td>{{ blog_article.coverPictureRef }}</td>
+                <td>
+                    <a href="{{ path('app_blog_article_show', {'id': blog_article.id}) }}">show</a>
+                    <a href="{{ path('app_blog_article_edit', {'id': blog_article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_blog_article_new') }}">Create new</a>
+{% endblock %}

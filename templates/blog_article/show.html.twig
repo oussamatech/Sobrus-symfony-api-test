@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogArticle{% endblock %}
+
+{% block body %}
+    <h1>BlogArticle</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ blog_article.id }}</td>
+            </tr>
+            <tr>
+                <th>AuthorId</th>
+                <td>{{ blog_article.authorId }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ blog_article.title }}</td>
+            </tr>
+            <tr>
+                <th>PublicationDate</th>
+                <td>{{ blog_article.publicationDate ? blog_article.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreationDate</th>
+                <td>{{ blog_article.creationDate ? blog_article.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ blog_article.content }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ blog_article.keywords ? blog_article.keywords|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ blog_article.status }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ blog_article.slug }}</td>
+            </tr>
+            <tr>
+                <th>CoverPictureRef</th>
+                <td>{{ blog_article.coverPictureRef }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_blog_article_index') }}">back to list</a>
+
+    <a href="{{ path('app_blog_article_edit', {'id': blog_article.id}) }}">edit</a>
+
+    {{ include('blog_article/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,16 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Blog Management API
+            description: Blog Management API
+            version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    in: header
+                    type: apiKey
+                    name: Authorization
+                    description: Bearer xxx... , All requests must include the `Authorization` header containing your Token.
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
